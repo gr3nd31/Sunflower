@@ -1,0 +1,18 @@
+import { SpinBox, Button, CheckBox, Slider, LineEdit, ScrollView, ListView,
+        HorizontalBox, VerticalBox, GridBox, StandardButton, ComboBox } from "std-widgets.slint";
+
+export component SplashWindow inherits Window {
+    preferred-width: 800px;
+    min-width: 800px;
+    preferred-height: 1200px;
+
+    title: "Sunflower - Sample Tracker";
+    VerticalBox {
+        HorizontalBox{
+            Text{
+                text: "Here is a splash screen";
+            }
+        }
+    }
+
+}

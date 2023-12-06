@@ -1,0 +1,88 @@
+import { SpinBox, Button, CheckBox, Slider, LineEdit, ScrollView, ListView,
+        HorizontalBox, VerticalBox, GridBox, StandardButton, ComboBox } from "std-widgets.slint";
+
+import { SplashWindow } from "./splash.slint";
+
+
+export component MainWindow inherits Window {
+    preferred-width: 800px;
+    min-width: 800px;
+    preferred-height: 1200px;
+
+    callback generated_proj_id(string);
+
+    title: "Sunflower - Sample Tracker";
+        // project ID and Experiment ID
+
+    VerticalBox{
+        HorizontalBox{
+            VerticalBox{
+            Rectangle{
+                Image {
+                    source: @image-url("../images/page_selection.svg");
+                }
+                background: #6284FF;
+                }
+            }
+        }
+        // Project ID
+        HorizontalBox{
+            height: 40px;
+            padding: 0px;
+            Text {
+                text: "Project ID:";
+                font-size: 16px;
+                horizontal-alignment: left;
+                vertical-alignment: center;
+            }
+            project_id := ComboBox {
+                current-value: @tr("JNp1");
+                model: [@tr("JNp1"), @tr("JNp2")];
+            }
+        // Experiment ID
+            Text {
+                text: "Experiment ID:";
+                font-size: 16px;
+                horizontal-alignment: left;
+                vertical-alignment: center;
+            }
+            exp_id := ComboBox {
+                current-value: @tr("1");
+                model: [@tr("1"), @tr("2")];
+            }
+            Text {
+                text: "Sample #:";
+                font-size: 16px;
+                horizontal-alignment: left;
+                vertical-alignment: center;
+            }
+            sample_id := ComboBox {
+                current-value: @tr("1");
+                model: [@tr("1"), @tr("2"), @tr("3")];
+            }
+        }
+        HorizontalBox{
+            sample_notes := LineEdit {
+                accepted(text) => {
+                    self.text = "";
+                }
+                placeholder-text: "Sample notes";
+            }
+        }
+        HorizontalBox{
+            height: 50px;
+            new_sample := Button {
+                text: "Add Sample";
+            }
+            update_sample:= Button {
+                text: "Update";
+            }
+            new_datafield := Button {
+                clicked => {
+
+                }
+                text: "New Data Field";
+            }
+        }
+    }
+}
